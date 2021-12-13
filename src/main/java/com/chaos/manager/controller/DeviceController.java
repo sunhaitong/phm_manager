@@ -9,6 +9,7 @@ import com.chaos.manager.entity.DeviceInfo;
 import com.chaos.manager.entity.QueryEntity;
 import com.chaos.manager.service.DeviceInfoService;
 import com.chaos.manager.entity.Result;
+import com.chaos.manager.utils.RedisOperator;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ import java.util.List;
 public class DeviceController {
     @Autowired
     private DeviceInfoService deviceInfoService;
+
+    @Autowired
+    private RedisOperator redisOperator;
 
     /**
      * 导入
@@ -49,7 +53,7 @@ public class DeviceController {
                 allRecords.addAll(readAll);
             }
             log.info("读取完成:"+System.currentTimeMillis());
-            return Result.success(deviceInfoService.importDevice(allRecords));
+            return Result.success(deviceInfoService.saveBatch(allRecords));
         } catch (Exception e) {
             log.error(e.getMessage());
             e.printStackTrace();
@@ -70,6 +74,20 @@ public class DeviceController {
         wrapper.eq(StringUtils.isNotBlank(entity.getDevNo()), "device_no", entity.getDevNo())
                 .eq(StringUtils.isNotBlank(entity.getPointNo()),"point_no", entity.getPointNo());
         IPage<DeviceInfo> pageEntity = deviceInfoService.page(page, wrapper);
+
+        // 更新终端通道状态
+        for (DeviceInfo deviceInfo : pageEntity.getRecords()) {
+            if (null != redisOperator.get(deviceInfo.getChannelId())) {
+                deviceInfo.setIsOnline(true);
+            } else {
+                deviceInfo.setIsOnline(false);
+            }
+        }
         return Result.success(pageEntity);
+    }
+
+    @GetMapping("getAll")
+    public List<DeviceInfo> getDeviceInfo() {
+        return deviceInfoService.list();
     }
 }

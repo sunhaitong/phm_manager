@@ -10,5 +10,4 @@ import java.util.List;
  * @date 2021/12/7
  */
 public interface DeviceInfoService extends IService<DeviceInfo> {
-    boolean importDevice(List<DeviceInfo> allRecords);
 }

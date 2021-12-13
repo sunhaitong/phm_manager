@@ -2,6 +2,7 @@ package com.chaos.manager.entity;
 
 import cn.hutool.core.annotation.Alias;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -23,6 +24,9 @@ public class DeviceInfo {
     private String pointNo;
     @Alias("通道ID")
     private String channelId;
-    @Alias("特征值")
-    private String kpiId;
+    @Alias("MAC地址")
+    private String macAddress;
+
+    @TableField(exist = false)
+    private Boolean isOnline;
 }

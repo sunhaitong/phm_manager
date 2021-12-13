@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("user")
 public class LoginController {
     @PostMapping("login")
-    Result login(@RequestBody UserEntity userEntity) {
+    public Result login(@RequestBody UserEntity userEntity) {
         if (userEntity.login()) {
             return Result.success("登陆成功");
         } else {

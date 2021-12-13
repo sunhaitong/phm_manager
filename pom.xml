@@ -263,15 +263,6 @@
             <version>1.7.25</version>
         </dependency>
 
-        <!--打包时使用
-        使用外置tomcat
-        -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-starter-tomcat</artifactId>-->
-        <!--            <scope>provided</scope>-->
-        <!--        </dependency>-->
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -286,11 +277,16 @@
             <version>5.6.0</version>
         </dependency>
 
-        <!-- modbus4java ...-->
+
+        <!--Redis Related  -->
         <dependency>
-            <groupId>com.infiniteautomation</groupId>
-            <artifactId>modbus4j</artifactId>
-            <version>3.0.3</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
     </dependencies>
