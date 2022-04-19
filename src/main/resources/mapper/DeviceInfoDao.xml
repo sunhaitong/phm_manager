@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chaos.manager.dao.DeviceInfoDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.chaos.manager.vo.DeviceInfo">
+        <id column="id" property="id" />
+        <result column="device_no" property="deviceNo" />
+        <result column="point_no" property="pointNo" />
+        <result column="channel_id" property="channelId"/>
+        <result column="device_name" property="deviceName"/>
+        <result column="mac_address" property="macAddress" />
+    </resultMap>
 
 </mapper>

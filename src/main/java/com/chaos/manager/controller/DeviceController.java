@@ -5,10 +5,10 @@ import cn.hutool.poi.excel.ExcelUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.chaos.manager.entity.DeviceInfo;
-import com.chaos.manager.entity.QueryEntity;
+import com.chaos.manager.vo.DeviceInfo;
+import com.chaos.manager.vo.QueryEntity;
 import com.chaos.manager.service.DeviceInfoService;
-import com.chaos.manager.entity.Result;
+import com.chaos.manager.vo.Result;
 import com.chaos.manager.utils.RedisOperator;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -74,7 +74,6 @@ public class DeviceController {
         wrapper.eq(StringUtils.isNotBlank(entity.getDevNo()), "device_no", entity.getDevNo())
                 .eq(StringUtils.isNotBlank(entity.getPointNo()),"point_no", entity.getPointNo());
         IPage<DeviceInfo> pageEntity = deviceInfoService.page(page, wrapper);
-
         // 更新终端通道状态
         for (DeviceInfo deviceInfo : pageEntity.getRecords()) {
             if (null != redisOperator.get(deviceInfo.getChannelId())) {

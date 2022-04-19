@@ -1,4 +1,4 @@
-package com.chaos.manager.entity;
+package com.chaos.manager.vo;
 
 import lombok.Getter;
 import lombok.Setter;

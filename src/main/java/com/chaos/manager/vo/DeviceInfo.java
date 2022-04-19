@@ -1,4 +1,4 @@
-package com.chaos.manager.entity;
+package com.chaos.manager.vo;
 
 import cn.hutool.core.annotation.Alias;
 import com.baomidou.mybatisplus.annotation.IdType;

@@ -1,7 +1,7 @@
 package com.chaos.manager.controller;
 
-import com.chaos.manager.entity.Result;
-import com.chaos.manager.entity.UserEntity;
+import com.chaos.manager.vo.Result;
+import com.chaos.manager.vo.UserEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

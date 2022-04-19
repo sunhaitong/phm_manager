@@ -1,9 +1,7 @@
 package com.chaos.manager.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.chaos.manager.entity.DeviceInfo;
-
-import java.util.List;
+import com.chaos.manager.vo.DeviceInfo;
 
 /**
  * @author yanghuan

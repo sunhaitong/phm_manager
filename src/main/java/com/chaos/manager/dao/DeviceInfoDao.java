@@ -1,7 +1,7 @@
 package com.chaos.manager.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.chaos.manager.entity.DeviceInfo;
+import com.chaos.manager.vo.DeviceInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
